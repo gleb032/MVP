@@ -12,10 +12,11 @@ class DescriptionLabel: UILabel {
     init() {
         super.init(frame: .zero)
         isUserInteractionEnabled = false
-        translatesAutoresizingMaskIntoConstraints = false
         textAlignment = .center
         text = ""
         font = .systemFont(ofSize: 25)
+        numberOfLines = 0
+        adjustsFontSizeToFitWidth = true
     }
     
     required init?(coder: NSCoder) {

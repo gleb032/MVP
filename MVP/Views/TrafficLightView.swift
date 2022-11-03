@@ -15,8 +15,9 @@ class TrafficLightView: UIButton {
     init(trafficLight: TrafficLight) {
         color = trafficLight.color
         super.init(frame: .zero)
-        translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = color.value
+        layer.borderColor = UIColor.gray.cgColor
+        layer.borderWidth = 3
     }
     
     required init?(coder: NSCoder) {
