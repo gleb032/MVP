@@ -1,2 +1,2 @@
 # MVP
-Studied MVP architecture
+Studied MVP architecture + SnapKit
