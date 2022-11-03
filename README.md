@@ -1,0 +1,2 @@
+# MVP
+Studied MVP architecture
