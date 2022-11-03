@@ -18,6 +18,7 @@
 		2C70B24A28F9EAE3005393DC /* TrafficLightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C70B24928F9EAE3005393DC /* TrafficLightView.swift */; };
 		2C70B24C28F9EC41005393DC /* TrafficColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C70B24B28F9EC41005393DC /* TrafficColor.swift */; };
 		2C70B24E28F9EEB9005393DC /* TrafficLights.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C70B24D28F9EEB9005393DC /* TrafficLights.swift */; };
+		7D807D87D761663EBD7CBFFF /* Pods_MVP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A9EC66C25E2057FE9631C995 /* Pods_MVP.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,9 @@
 		2C70B24928F9EAE3005393DC /* TrafficLightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficLightView.swift; sourceTree = "<group>"; };
 		2C70B24B28F9EC41005393DC /* TrafficColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficColor.swift; sourceTree = "<group>"; };
 		2C70B24D28F9EEB9005393DC /* TrafficLights.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficLights.swift; sourceTree = "<group>"; };
+		3B1573D5A4C443C2273FAB8D /* Pods-MVP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVP.release.xcconfig"; path = "Target Support Files/Pods-MVP/Pods-MVP.release.xcconfig"; sourceTree = "<group>"; };
+		A9EC66C25E2057FE9631C995 /* Pods_MVP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MVP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAD83737A1DE95C010DD1E1A /* Pods-MVP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MVP.debug.xcconfig"; path = "Target Support Files/Pods-MVP/Pods-MVP.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7D807D87D761663EBD7CBFFF /* Pods_MVP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,6 +57,8 @@
 			children = (
 				2C70B22528F96F48005393DC /* MVP */,
 				2C70B22428F96F48005393DC /* Products */,
+				CCD5057ED53DD1DD22C1F986 /* Pods */,
+				611CC823894079CE709D08B0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -122,6 +129,24 @@
 			path = "Supporting files";
 			sourceTree = "<group>";
 		};
+		611CC823894079CE709D08B0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A9EC66C25E2057FE9631C995 /* Pods_MVP.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CCD5057ED53DD1DD22C1F986 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CAD83737A1DE95C010DD1E1A /* Pods-MVP.debug.xcconfig */,
+				3B1573D5A4C443C2273FAB8D /* Pods-MVP.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -129,9 +154,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2C70B23728F96F4D005393DC /* Build configuration list for PBXNativeTarget "MVP" */;
 			buildPhases = (
+				5888895E9A3E3EF2B41A0C9B /* [CP] Check Pods Manifest.lock */,
 				2C70B21F28F96F48005393DC /* Sources */,
 				2C70B22028F96F48005393DC /* Frameworks */,
 				2C70B22128F96F48005393DC /* Resources */,
+				0AB44249C6A238639316C214 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -185,6 +212,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0AB44249C6A238639316C214 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MVP/Pods-MVP-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MVP/Pods-MVP-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MVP/Pods-MVP-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5888895E9A3E3EF2B41A0C9B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MVP-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2C70B21F28F96F48005393DC /* Sources */ = {
@@ -323,6 +392,7 @@
 		};
 		2C70B23828F96F4D005393DC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CAD83737A1DE95C010DD1E1A /* Pods-MVP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -350,6 +420,7 @@
 		};
 		2C70B23928F96F4D005393DC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B1573D5A4C443C2273FAB8D /* Pods-MVP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
