@@ -8,6 +8,8 @@
 import Foundation
 import UIKit
 
+import SnapKit
+
 class TrafficLightViewController: UIViewController, TrafficLightViewDelegate {
     
     private var descriptionLabel = DescriptionLabel()
@@ -27,6 +29,12 @@ class TrafficLightViewController: UIViewController, TrafficLightViewDelegate {
         setUpActions()
     }
     
+    private func setUpActions() {
+        for (_, light) in trafficLightViews {
+            light.addTarget(self, action: #selector(lightAction(_:)), for: .touchUpInside)
+        }
+    }
+    
     @objc func lightAction(_ sender: Any) {
         guard let trafficLight = sender as? TrafficLightView else { return }
         trafficLightPresenter.trafficLightColorSelected(color: trafficLight.color)
@@ -35,12 +43,12 @@ class TrafficLightViewController: UIViewController, TrafficLightViewDelegate {
     func displayTrafficLight(description: String) {
         descriptionLabel.text = description
     }
-    
+}
+
+// MARK: Set Up Layout
+
+extension TrafficLightViewController {
     private func setUpTrafficLightsLayout() {
-        for (_, light) in trafficLightViews {
-            view.addSubview(light)
-        }
-        
         guard let red = trafficLightViews["red"],
               let yellow = trafficLightViews["yellow"],
               let green = trafficLightViews["green"]
@@ -48,67 +56,31 @@ class TrafficLightViewController: UIViewController, TrafficLightViewDelegate {
             return assertionFailure("Must have all lights!")
         }
         
-        for (_, light) in trafficLightViews {
-            light.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-                .isActive = true
-        }
-        
-        let lightSize = min(
-            view.frame.width / 3,
-            view.frame.height * 2 / 3 / 3
-        )
+        let lightSize = min(view.frame.width / 3, view.frame.height * 2/3/3)
         
         for (_, light) in trafficLightViews {
-            light.heightAnchor.constraint(equalToConstant: lightSize)
-                .isActive = true
-        }
-        
-        red.widthAnchor.constraint(equalTo: red.heightAnchor)
-            .isActive = true
-        yellow.widthAnchor.constraint(equalTo: yellow.heightAnchor)
-            .isActive = true
-        green.widthAnchor.constraint(equalTo: green.heightAnchor)
-            .isActive = true
-        
-        red.topAnchor.constraint(
-            equalTo: view.safeAreaLayoutGuide.topAnchor,
-            constant: 20
-        ).isActive = true
-        yellow.topAnchor.constraint(
-            equalTo: red.bottomAnchor,
-            constant: 20
-        ).isActive = true
-        green.topAnchor.constraint(
-            equalTo: yellow.bottomAnchor,
-            constant: 20
-        ).isActive = true
-        
-        for (_, light) in trafficLightViews {
+            view.addSubview(light)
+            light.snp.makeConstraints { make in
+                make.centerX.equalToSuperview()
+                make.height.equalTo(lightSize)
+                make.width.equalTo(lightSize)
+            }
             light.layer.cornerRadius = lightSize / 2
-            light.layer.borderColor = UIColor.gray.cgColor
-            light.layer.borderWidth = 3
         }
+        
+        red.snp.makeConstraints { $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(20) }
+        yellow.snp.makeConstraints { $0.top.equalTo(red.snp.bottom).offset(20) }
+        green.snp.makeConstraints { $0.top.equalTo(yellow.snp.bottom).offset(20) }
     }
     
     private func setUpDescriptionLabelLayout() {
         view.addSubview(descriptionLabel)
         
-        descriptionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-            .isActive = true
-        descriptionLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor)
-            .isActive = true
-        descriptionLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
-            .isActive = true
-        descriptionLabel.bottomAnchor.constraint(
-            equalTo: view.safeAreaLayoutGuide.bottomAnchor,
-            constant: -40
-        ).isActive = true
-        
-    }
-    
-    private func setUpActions() {
-        for (_, light) in trafficLightViews {
-            light.addTarget(self, action: #selector(lightAction(_:)), for: .touchUpInside)
+        descriptionLabel.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.leading.equalTo(view.safeAreaLayoutGuide.snp.leading)
+            make.trailing.equalTo(view.safeAreaLayoutGuide.snp.trailing)
+            make.bottom.equalTo(view.safeAreaLayoutGuide.snp.bottom).inset(40)
         }
     }
 }
